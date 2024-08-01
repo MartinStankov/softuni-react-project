@@ -1,0 +1,45 @@
+.navigation_bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    /* padding: 20px; */
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
+}
+
+/* Logo styles */
+.logo h1 {
+    margin: 0;
+    font-size: var(--font-size-medium);
+    color: var(--secondary-color);
+}
+
+/* Navigation buttons container */
+.navigation_buttons {
+    display: flex;
+    gap: 20px;
+}
+
+/* Links inside navigation buttons */
+.navigation_buttons a {
+    color: var(--secondary-color);
+    text-decoration: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.navigation_buttons a:hover {
+    background-color: var(--secondary-background-color);
+    color: var(--secondary-color);
+}
+
+/* Special styles for Sign Up button */
+.signUpButton {
+    background-color: var(--accent-color);
+    color: var(--secondary-color);
+}
+
+.signUpButton:hover {
+    background-color: var(--link-hover-color);
+}

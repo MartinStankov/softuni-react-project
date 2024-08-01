@@ -1,0 +1,138 @@
+/* .container {
+    width: 100vw;
+    height: 89.3vh;
+    background-color: var(--background-color);
+    font-family: var(--font-family);
+    background: rgb(2,0,36);
+    background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 35%, rgba(184,0,255,1) 66%);
+} */
+
+.main {
+    width: 100%;
+    overflow-x: hidden;
+    background: rgb(2,0,36);
+    background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 35%, rgba(184,0,255,1) 66%);
+}
+
+
+.hero {
+    margin-top: 2em;
+    text-align: center;
+    /* padding: 3rem 1rem; */
+    /* background-color: #f1f1f1; */
+    background: rgb(2,0,36);
+    background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 35%, rgba(184,0,255,1) 66%);
+}
+
+
+.hero h1 {
+    font-size: 3rem;
+    margin-bottom: 0.5rem;
+}
+
+.hero p {
+    font-size: 1.25rem;
+    /* color: white; */
+}
+
+.pricing {
+    padding: 2rem 1rem;
+}
+
+.pricingToggle {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.toggleBtn {
+    background-color: #eee;
+    color: black;
+    border: none;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    margin: 0 0.25rem;
+    border-radius: 0.25rem;
+    width: 100px;
+}
+
+
+.pricingCards {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.card {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 0.25rem;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    padding: 1.5rem;
+    text-align: center;
+    width: 300px;
+}
+
+
+.card h2 {
+    margin-bottom: 1rem;
+    color: black;
+}
+
+.price {
+    color: black;
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+.price span {
+    font-size: 1rem;
+    color: #666;
+}
+
+.card ul {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 1rem;
+}
+
+.card li {
+    margin-bottom: 0.5rem;
+    color: black;
+}
+
+.card .btn {
+    background-color: #eee;
+    color: black;
+    border: none;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    margin: 0 0.25rem;
+    border-radius: 0.25rem;
+    width: 100px;
+}
+
+.card .btn:hover {
+    background-color: var(--link-hover-color);
+}
+
+/* ORIGINAL */
+/* .pageContainer {
+    width: 100vw;
+    height: 89.3vh;
+    background-color: var(--background-color);
+    font-family: var(--font-family);
+    background: rgb(2,0,36);
+    background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 35%, rgba(184,0,255,1) 66%);
+} */
+
+.discountMessage {
+    color: #ff4d4f; /* A red color to indicate discount */
+    font-size: 1rem; /* A slightly smaller font size */
+    font-weight: bold; /* Make the discount text bold */
+    margin-top: -0.5rem; /* Slightly reduce the space above the discount text */
+    margin-bottom: 1rem; /* Space between discount text and list items */
+}
+
+.heading{
+    color: white;
+}
