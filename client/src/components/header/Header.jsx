@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 export default function Header() {
     // const { isAuthenticated } = auth
-    const { isAuthenticated } = useAuthContext()
+    const { userId, isAuthenticated } = useAuthContext()
     return (
         <nav className={styles.navigation_bar}>
             <div className={styles.logo}>
@@ -14,8 +14,10 @@ export default function Header() {
                 {/* <Link to='/:userId/dashboard'><span style={{ fontWeight: 'bold' }}>Your Notes</span></Link> */}
                 {isAuthenticated && (
                     <>
-                        <Link to='/dashboard/:userId'><span style={{ fontWeight: 'bold' }}>Your Notes</span></Link>
-                        <Link to='/:userId/create'><span style={{ fontWeight: 'bold' }}>+</span> Add Note</Link>
+                        {/* <Link to='/:userId/dashboard'><span style={{ fontWeight: 'bold' }}>Your Notes</span></Link> */}
+                        {/* <Link to='/dashboard'><span style={{ fontWeight: 'bold' }}>Your Notes</span></Link> */}
+                        <Link to={`${userId}/dashboard`}><span style={{ fontWeight: 'bold' }}>Your Notes</span></Link>
+                        <Link to='/create'><span style={{ fontWeight: 'bold' }}>+</span> Add Note</Link>
                     </>
                 )}
                 <Link to='/pro'>Traveler Pro</Link>

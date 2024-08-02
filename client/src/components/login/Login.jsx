@@ -1,3 +1,4 @@
+import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 
 import styles from './Login.module.css';
@@ -7,7 +8,7 @@ import useForm from '../../hooks/useForm';
 const initialValues = { email: '', password: '' };
 
 export default function Login() {
-    //TODO: add error messages and proper validation
+    //TODO: add error messages and proper validation as well as keeping the values of the form fields
 
     const login = useLogin();
     const navigate = useNavigate();

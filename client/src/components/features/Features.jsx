@@ -3,7 +3,7 @@ import styles from './Features.module.css';
 import { useAuthContext } from '../../contexts/AuthContext';
 
 export default function Features() {
-    const {isAuthenticated} = useAuthContext();
+    const {isAuthenticated} =  useAuthContext();
     return (
         <div className={styles.featuresWrapper}>
             <div className={styles.container}>
@@ -13,8 +13,9 @@ export default function Features() {
                     </h1>
                     <p>
                         Whether it's a business trip, a family vacation or a quick weekend away,
-                        Traveler provides you with a chance to organize your information in seconds.
+                        Traveler provides you with a chance to organize your information in seconds.    
                     </p>
+
                     {!isAuthenticated && <p>Simply <Link to='/register' className={styles.signUpButton}>Sign Up</Link> and start adding your trips!</p>}
                     {!isAuthenticated && <Link to='/register' className={styles.signUpButtonBottom}>Sign Up! It's Free!</Link>}
                     {/* might change to dashboard later */}

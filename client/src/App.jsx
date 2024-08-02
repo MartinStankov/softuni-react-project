@@ -13,6 +13,11 @@ import Dashboard from './components/dashboard/Dashboard'
 import { AuthContextProvider } from './contexts/AuthContext'
 import Logout from './components/logout/Logout'
 import ErrorPage from './components/error-page/ErrorPage'
+import CreateNote from './components/create-note/CreateNote'
+import CreateRegularNote from './components/create-note/create-regular-note/CreateRegularNote'
+import CreateTripNote from './components/create-note/create-trip-note/CreateTripNote'
+import RegularNotesDashboard from './components/dashboard/regular-notes-dashboard/RegularNotesDashboard'
+import TripNotesDashboard from './components/dashboard/trip-notes-dashboard/TripNotesDashboard'
 
 function App() {
 
@@ -30,9 +35,18 @@ function App() {
                     <Route path='/register' element={<Register />} />
                     <Route path='/logout' element={<Logout />} />
                     {/*TODO: change the path to correct userId rendering the correct component Dashboard*/}
-                    <Route path='/:userId/create' element={<Home />} />
-                    <Route path='/:userId/dashboard' element={<Home />} />
-                    <Route path='/dashboard' element={<Dashboard />} />
+                    <Route path='/create' element={<CreateNote />} />
+                    {/* <Route path='/create/regularnote' element={<CreateRegularNote />} /> */}
+                    <Route path='/regularnote/create' element={<CreateRegularNote />} />
+                    {/* <Route path='/create/tripnote' element={<CreateTripNote />} /> */}
+                    <Route path='/tripnote/create' element={<CreateTripNote />} />
+                    {/* <Route path='/:userId/dashboard' element={<Dashboard />} /> */}
+                    {/* <Route path='/dashboard' element={<Dashboard />} /> */}
+                    <Route path='/:userId/dashboard' element={<Dashboard />} />
+                    <Route path='/:userId/dashboard/regularnotes' element={<RegularNotesDashboard />} />
+                    <Route path='/:userId/dashboard/tripnotes' element={<TripNotesDashboard />} />
+                    {/* <Route path='/dashboard/regularnotes' element={<Dashboard />} /> */}
+                    {/* <Route path='/dashboard/trip' element={<Dashboard />} /> */}
                     <Route path='*' element={<ErrorPage />} />
                 </Routes>
                 <Footer />
