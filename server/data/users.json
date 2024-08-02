@@ -1,0 +1,31 @@
+{
+  "userId1": {
+    "_id": "userId1",
+    "username": "john_doe",
+    "trips": [
+      "tripId1",
+      "tripId2"
+    ]
+  },
+  "userId2": {
+    "_id": "userId2",
+    "username": "john_doe",
+    "trips": [
+      "tripId2"
+    ]
+  },
+  "userId3": {
+    "_id": "userId3",
+    "username": "john_doe",
+    "trips": [
+      "tripId3" 
+    ]
+  },
+  "userId4": {
+    "_id": "userId4",
+    "username": "john_doe",
+    "trips": [
+      "tripId4"
+    ]
+  }
+}

@@ -1,0 +1,42 @@
+{
+    "tripId1": {
+        "_id": "tripId1",
+        "to": "Uganda",
+        "tripOwnerId": "userId1",
+        "pros": "Good Trip!",
+        "cons": "Bad Trip!",
+        "liked": "true"
+    },
+    "tripId2": {
+        "_id": "tripId2",
+        "to": "Bulgaria",
+        "tripOwnerId": "userId2",
+        "pros": "Good Trip!",
+        "cons": "Bad Trip!",
+        "liked": "true"
+    },
+    "tripId3": {
+        "_id": "tripId3",
+        "to": "Paris",
+        "tripOwnerId": "userId3",
+        "pros": "Good Trip!",
+        "cons": "Bad Trip!",
+        "liked": "true"
+    },
+    "tripId4": {
+        "_id": "tripId4",
+        "to": "Germany",
+        "tripOwnerId": "userId4",
+        "pros": "Good Trip!",
+        "cons": "Bad Trip!",
+        "liked": "true"
+    },
+    "tripId5": {
+        "_id": "tripId5",
+        "to": "Germany1111",
+        "tripOwnerId": "userId4",
+        "pros": "Good Trip!",
+        "cons": "Bad Trip!",
+        "liked": "true"
+    }
+}
