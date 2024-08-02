@@ -74,3 +74,7 @@
     pointer-events: none; /* Prevent the pseudo-element from interfering with any content interaction */
     border-radius: inherit; /* Match border-radius if you have one */
   }
+
+  .homePageRedirect{
+    color: blue;
+  }

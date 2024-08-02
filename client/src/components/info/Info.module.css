@@ -81,3 +81,14 @@
 .redirection{
     color: blue;
 }
+
+.signUpButtonBottom {
+    background-color: #007bff;
+    color: black;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+    display: inline-block; /* Ensure the button is inline for alignment */
+  }
