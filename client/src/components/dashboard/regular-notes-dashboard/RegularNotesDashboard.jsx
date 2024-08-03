@@ -3,6 +3,7 @@ import styles from './RegularNotesDashboard.module.css';
 import { useGetAllRegularNotes } from '../../../hooks/useRegularNotes';
 import { useEffect, useState } from 'react';
 import { useAuthContext } from '../../../contexts/AuthContext';
+import { Link } from 'react-router-dom';
 
 export default function RegularNotesDashboard() {
     // Sample notes data
@@ -43,11 +44,11 @@ export default function RegularNotesDashboard() {
                 <div className={styles.notesGrid}>
 
                     {regularNotes.filter(note => note._ownerId === userId).map(note => (
-                        <div key={regularNotes.id} className={styles.noteCard}>
+                        <div key={note._id} className={styles.noteCard}>
                             <h2 className={styles.noteSubject}>{note.subject}</h2>
                             <p className={styles.noteText}>{note.content}</p>
                             {/* TODO: CHANGE BUTTON TO LINK */}
-                            <button className={styles.detailsButton}>Details</button>
+                            <Link to={`/${userId}/dashboard/regularnotes/${note._id}`} className={styles.detailsButton}>Details</Link>
                         </div>
                     ))}
                 </div>

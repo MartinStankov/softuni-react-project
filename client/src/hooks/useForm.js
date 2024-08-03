@@ -1,7 +1,11 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 
 function useForm(initialValues, submitCallback) {
     const [values, setValues] = useState(initialValues)
+
+    // useEffect(() => {
+    //     setValues(initialValues)
+    // }, [initialValues])
 
     const changeHandler = (e) => {
         setValues(state => ({
@@ -22,6 +26,7 @@ function useForm(initialValues, submitCallback) {
         values,
         changeHandler,
         submitHandler,
+        // setValues,
     }
 }
 

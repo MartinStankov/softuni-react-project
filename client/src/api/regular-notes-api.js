@@ -19,6 +19,8 @@ const createRegularNote = (noteData) => request.post(`${BASE_URL}`, noteData);
 //     return requester.get(`${BASE_URL}?${params.toString()}`);
 // }
 
+const getOneRegularNote = (noteId) => request.get(`${BASE_URL}/${noteId}`);
+
 const getAllRegularNotes = async () => {
     const result = await request.get(BASE_URL);
 
@@ -28,9 +30,16 @@ const getAllRegularNotes = async () => {
     return regularNotes
 }
 
+const updateRegularNote = (noteId, noteData) => request.put(`${BASE_URL}/${noteId}`, noteData);
+
+const removeRegularNote = (noteId) => request.del(`${BASE_URL}/${noteId}`);
+
 const regularNotesApi = {
     createRegularNote,
-    getAllRegularNotes
+    getAllRegularNotes,
+    getOneRegularNote,
+    updateRegularNote,
+    removeRegularNote,
 };
 
 export default regularNotesApi;

@@ -18,6 +18,10 @@ import CreateRegularNote from './components/create-note/create-regular-note/Crea
 import CreateTripNote from './components/create-note/create-trip-note/CreateTripNote'
 import RegularNotesDashboard from './components/dashboard/regular-notes-dashboard/RegularNotesDashboard'
 import TripNotesDashboard from './components/dashboard/trip-notes-dashboard/TripNotesDashboard'
+import RegularNoteDetails from './components/regular-note-details/RegularNoteDetails'
+import TripNoteDetails from './components/trip-note-details/TripNoteDetails'
+import EditRegularNote from './components/edit-regular-note/EditRegularNote'
+import EditTripNote from './components/edit-trip-note/EditTripNote'
 
 function App() {
 
@@ -45,6 +49,13 @@ function App() {
                     <Route path='/:userId/dashboard' element={<Dashboard />} />
                     <Route path='/:userId/dashboard/regularnotes' element={<RegularNotesDashboard />} />
                     <Route path='/:userId/dashboard/tripnotes' element={<TripNotesDashboard />} />
+                    <Route path='/:userId/dashboard/regularnotes/:noteId' element={<RegularNoteDetails />} />
+                    <Route path='/:userId/dashboard/tripnotes/:noteId' element={<TripNoteDetails />} />
+                    {/* CHANGE WITH EDIT FORM AND DELETE*/}
+                    <Route path=':userId/dashboard/regularnotes/:noteId/edit' element={<EditRegularNote />} />
+                    <Route path=':userId/dashboard/regularnotes/:noteId/delete' element={<RegularNoteDetails />} />
+                    <Route path=':userId/dashboard/tripnotes/:noteId/edit' element={<EditTripNote />} />
+                    <Route path=':userId/dashboard/tripnotes/:noteId/delete' element={<TripNoteDetails />} />
                     {/* <Route path='/dashboard/regularnotes' element={<Dashboard />} /> */}
                     {/* <Route path='/dashboard/trip' element={<Dashboard />} /> */}
                     <Route path='*' element={<ErrorPage />} />

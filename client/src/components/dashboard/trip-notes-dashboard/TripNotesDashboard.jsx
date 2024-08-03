@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import styles from './TripNotesDashboard.module.css';
 import { useGetAllTripNotes } from '../../../hooks/useTripNotes';
 import { useAuthContext } from '../../../contexts/AuthContext';
+import { Link } from 'react-router-dom';
 
 export default function TripNotesDashboard() {
     // Sample notes data
@@ -30,11 +31,11 @@ export default function TripNotesDashboard() {
                 <h1>Your Trip Notes</h1>
                 <div className={styles.notesGrid}>
                     {tripNotes.filter(note => note._ownerId === userId).map(note => (
-                        <div key={tripNotes.id} className={styles.noteCard}>
+                        <div key={note._id} className={styles.noteCard}>
                             <h2 className={styles.noteSubject}>{note.destination}</h2>
                             <p className={styles.noteText}>{note.thoughts}</p>
                             {/*TODO: CHANGE TO LINK! */}
-                            <button className={styles.detailsButton}>Details</button>
+                            <Link to={`/${userId}/dashboard/tripnotes/${note._id}`} className={styles.detailsButton}>Details</Link>
                         </div>
                     ))}
                 </div>

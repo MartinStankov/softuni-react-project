@@ -27,6 +27,9 @@ h1 {
     margin-bottom: 10px; /* Reduce margin to avoid overflow */
     font-size: 2em;
     color: #333;
+    overflow: hidden; /* Prevent scrollbar from appearing */
+    white-space: nowrap; /* Prevent text wrapping if the heading is too long */
+    text-overflow: ellipsis; /* Add ellipsis if the text overflows */
 }
 
 .notesGrid {

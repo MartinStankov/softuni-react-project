@@ -27,6 +27,23 @@ export function useCreateRegularNote() {
 //     return [notes, setNotes];
 // }
 
+export function useGetOneRegularNote(noteId){
+    const [note, setNote] = useState({});
+
+    useEffect(() => {
+        (async () => {
+            try{
+                const result = await regularNotesApi.getOneRegularNote(noteId);
+                setNote(result);
+            }catch(err){
+                console.log(err.message);
+            }
+        })()
+    }, [noteId]);
+
+    return [note, setNote];
+}
+
 export function useGetAllRegularNotes() {
     const [notes, setNotes] = useState([]);
 
