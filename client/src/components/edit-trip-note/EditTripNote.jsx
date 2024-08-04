@@ -7,6 +7,7 @@ import tripNotesApi from '../../api/trip-notes-api';
 const initialValues = { destination: '', thoughts: '' };
 
 export default function EditTripNote() {
+    const [error, setError] = useState('');
     const navigate = useNavigate();
     const { userId, noteId } = useParams();
 
@@ -20,6 +21,10 @@ export default function EditTripNote() {
         setValues,
     } = useForm(note, async (values) => {
         const isConfirmed = confirm('Are you sure you want to edit this note?');
+        if (values.destination.trim() === '') {
+            setError('If you want to edit a trip note you must provide a destination!');
+            return;
+        }
         if (isConfirmed) {
             await tripNotesApi.updateTripNote(noteId, values);
             navigate(`/${userId}/dashboard/tripnotes/${noteId}`);
@@ -68,6 +73,11 @@ export default function EditTripNote() {
                     onChange={changeHandler}
                     className={styles.input}
                 />
+                {error && (
+                    <p>
+                        <span style={{ color: 'red' }}>{error}</span>
+                    </p>
+                )}
                 <button type="submit" className={styles.button}>Edit</button>
             </form>
         </div>

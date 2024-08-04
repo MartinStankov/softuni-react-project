@@ -13,6 +13,7 @@ export default function EditRegularNote() {
     const navigate = useNavigate();
     const { userId, noteId } = useParams();
     
+    const [error, setError] = useState('');
     const [note, setNote] = useState(initialValues);
     const [loading, setLoading] = useState(true);
 
@@ -23,6 +24,11 @@ export default function EditRegularNote() {
         setValues,
     } = useForm(note, async (values) => {
         const isConfirmed = confirm('Are you sure you want to edit this note?');
+        if(values.subject.trim() === ''){
+            setError('If you want to edit a note you must provide a subject!');
+            return;
+        }
+        
         if (isConfirmed) {
             await regularNotesApi.updateRegularNote(noteId, values);
             navigate(`/${userId}/dashboard/regularnotes/${noteId}`);
@@ -71,6 +77,11 @@ export default function EditRegularNote() {
                     onChange={changeHandler}
                     className={styles.input}
                 />
+                {error && (
+                    <p>
+                        <span style={{ color: 'red' }}>{error}</span>
+                    </p>
+                )}
                 <button type="submit" className={styles.button}>Edit</button>
             </form>
         </div>

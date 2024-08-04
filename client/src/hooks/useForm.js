@@ -14,19 +14,29 @@ function useForm(initialValues, submitCallback) {
         }))
     }
 
-    const submitHandler = (e) => {
+    //Old behaviour
+    // const submitHandler = (e) => {
+    //     e.preventDefault()
+
+    //     submitCallback(values)
+
+    //     setValues(initialValues)
+    // }
+    const submitHandler = async (e) => {
         e.preventDefault()
 
-        submitCallback(values)
+        const success = await submitCallback(values);
 
-        setValues(initialValues)
+        if (success) {
+            setValues(initialValues);
+        }
     }
 
     return {
         values,
         changeHandler,
         submitHandler,
-        // setValues,
+        setValues,
     }
 }
 

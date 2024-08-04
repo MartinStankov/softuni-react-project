@@ -36,15 +36,20 @@ export default function TripNoteDetails() {
         submitHandler,
         values,
     } = useForm(Object.assign(initialValues, noteDetails));
-    // console.log(values);
+    // console.log(values); 
+    
 
     const deleteTripNoteHandler = async () => {
-        try {
-            await tripNotesApi.removeTripNote(noteId);
+        const isConfirmed = confirm(`Are you sure you want to delete this "${noteDetails.destination}" trip note?`);
 
-            navigate(`/${userId}/dashboard/tripnotes`);
-        } catch (err) {
-            console.log(err.message);
+        if (isConfirmed) {
+            try {
+                await tripNotesApi.removeTripNote(noteId);
+    
+                navigate(`/${userId}/dashboard/tripnotes`);
+            } catch (err) {
+                console.log(err.message);
+            }
         }
     }
 

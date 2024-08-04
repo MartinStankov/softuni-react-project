@@ -39,13 +39,26 @@ export default function RegularNoteDetails() {
     } = useForm(Object.assign(initialValues, noteDetails));
     // console.log(values);
 
-    const deleteRegularNoteHandler = async () => {
-        try{
-            await regularNotesApi.removeRegularNote(noteId);
+    //Original behaviour
+    // const deleteRegularNoteHandler = async () => {
+    //     try{
+    //         await regularNotesApi.removeRegularNote(noteId);
 
-            navigate(`/${userId}/dashboard/regularnotes`);
-        }catch(err){
-            console.log(err.message);
+    //         navigate(`/${userId}/dashboard/regularnotes`);
+    //     }catch(err){
+    //         console.log(err.message);
+    //     }
+    // }
+    const deleteRegularNoteHandler = async () => {
+        const isConfirmed = confirm(`Are you sure you want to delete this "${noteDetails.subject}" regular note?`);
+        
+        if (isConfirmed) {
+            try {
+                await regularNotesApi.removeRegularNote(noteId);
+                navigate(`/${userId}/dashboard/regularnotes`);
+            } catch (err) {
+                console.log(err.message);
+            }
         }
     }
 

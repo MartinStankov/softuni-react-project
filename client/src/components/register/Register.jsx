@@ -13,8 +13,23 @@ export default function Register() {
     const navigate = useNavigate()
 
     const registerHandler = async ({ ...values }) => {
+        if (!values.email || !values.password || !values['confirm-password']) {
+            setError('All fields are required!')
+            return
+        }
+
+        if (values.email.length < 5) {
+            setError('Email must be at least 5 characters long!')
+            return
+        }
+
         if (values.password !== values['confirm-password']) {
-            setError('Passwords do not match')
+            setError('Passwords do not match!')
+            return
+        }
+
+        if (values.password.length < 5) {
+            setError('Password must be at least 5 characters long!')
             return
         }
 

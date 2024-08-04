@@ -12,11 +12,28 @@ export default function Login() {
 
     const login = useLogin();
     const navigate = useNavigate();
+    const [error, setError] = useState('');
     const loginHandler = async ({ email, password }) => {
+        if (!email || !password) {
+            setError('Both email and password are required!');
+            return;
+        }
+
+        if(email.length < 5){
+            setError('Email must be at least 5 characters long!');
+            return;
+        }
+
+        if (password.length < 5) {
+            setError('Password must be at least 5 characters long!');
+            return;
+        }
+
         try {
             await login(email, password);
             navigate('/');
         } catch (err) {
+            setError(err.message);
             console.log(err);
         }
     };
@@ -47,6 +64,11 @@ export default function Login() {
                     onChange={changeHandler}
                     className={styles.input}
                 />
+                {error && (
+                    <p>
+                        <span style={{ color: 'red' }}>{error}</span>
+                    </p>
+                )}
                 <button type="submit" className={styles.button}>Login</button>
                 <p className={styles.noAccount}>Don't have an account? <Link to="/register" className={styles.signUpButton}>Sign Up</Link></p>
             </form>

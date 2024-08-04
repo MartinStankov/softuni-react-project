@@ -9,7 +9,7 @@ export default function Features() {
             <div className={styles.container}>
                 <div className={styles.card}>
                     <h1>
-                        Your travel information at your fingertips, right when you need it
+                        Your travel information at your fingertips,<br />right when you need it!
                     </h1>
                     <p>
                         Whether it's a business trip, a family vacation or a quick weekend away,

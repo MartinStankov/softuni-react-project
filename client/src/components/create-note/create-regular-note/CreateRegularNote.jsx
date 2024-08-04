@@ -3,20 +3,23 @@ import styles from './CreateRegularNote.module.css';
 import { useCreateRegularNote } from '../../../hooks/useRegularNotes';
 import useForm from '../../../hooks/useForm';
 import { useAuthContext } from '../../../contexts/AuthContext';
+import { useState } from 'react';
 
 const initialValues = { subject: '', content: '' };
 
 export default function CreateRegularNote() {
+    const [error, setError] = useState('')
     const navigate = useNavigate();
     const regularNoteCreate = useCreateRegularNote();
     const {userId} = useAuthContext()
     const createHandler = async (values) => {
+        if (values.subject.trim() === '') {
+            setError('To create a regular note you need to proivde a subject!');
+            return;
+        }
+
         try {
             const {_id: noteId} = await regularNoteCreate(values)
-            //you can change the url for better navigation by adding the noteId
-            //ORIGINAL VARIANT
-            // navigate(`/dashboard/regularnotes`)
-            // navigate(`${userId}/dashboard/regularnotes}`)
             navigate(`/${userId}/dashboard/regularnotes`)
         }catch (err){
             console.log(err.message);
@@ -49,6 +52,11 @@ export default function CreateRegularNote() {
                     onChange={changeHandler}
                     className={styles.input}
                 />
+                {error && (
+                    <p>
+                        <span style={{ color: 'red' }}>{error}</span>
+                    </p>
+                )}
                 <button type="submit" className={styles.button}>Create</button>
             </form>
         </div>

@@ -3,15 +3,22 @@ import { useCreateTripNote } from "../../../hooks/useTripNotes";
 import { useNavigate } from "react-router-dom";
 import styles from './CreateTripNote.module.css';
 import { useAuthContext } from "../../../contexts/AuthContext";
+import { useState } from "react";
 
 const initialValues = { destination: '', thoughts: '' };
 
 export default function CreateTripNote() {
+    const [error, setError] = useState('')
     const navigate = useNavigate();
     const tripNoteCreate = useCreateTripNote();
     const {userId} = useAuthContext()
 
     const createHandler = async (values) => {
+        if (values.destination.trim() === '') {
+            setError('To create a trip note you need to provide a destination!');
+            return;
+        }
+
         try {
             const { _id: noteId } = await tripNoteCreate(values)
             //you can change the url for better navigation by adding the noteId
@@ -47,6 +54,11 @@ export default function CreateTripNote() {
                     onChange={changeHandler}
                     className={styles.input}
                 />
+                {error && (
+                    <p>
+                        <span style={{ color: 'red' }}>{error}</span>
+                    </p>
+                )}
                 <button type="submit" className={styles.button}>Create</button>
             </form>
         </div>
