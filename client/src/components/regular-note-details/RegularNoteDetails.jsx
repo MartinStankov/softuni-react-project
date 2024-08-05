@@ -5,6 +5,8 @@ import { useGetOneRegularNote } from "../../hooks/useRegularNotes";
 import styles from './RegularNoteDetails.module.css';
 import useForm from "../../hooks/useForm";
 import { Link } from "react-router-dom";
+import { useAuthContext } from "../../contexts/AuthContext";
+import ErrorPage from "../error-page/ErrorPage";
 
 const initialValues = {
     subject: '',
@@ -12,6 +14,7 @@ const initialValues = {
 }
 
 export default function RegularNoteDetails() {
+    const {userId: currUserId} = useAuthContext();
     const navigate = useNavigate();
     const { userId, noteId } = useParams();
     const [noteDetails, setNoteDetails] = useState('');
@@ -20,7 +23,6 @@ export default function RegularNoteDetails() {
         try {
             const response = await regularNotesApi.getOneRegularNote(noteId);
             setNoteDetails(response);
-            // console.log(response); // This will log the actual data
         } catch (error) {
             console.error('Error fetching the note:', error);
         }
@@ -30,25 +32,12 @@ export default function RegularNoteDetails() {
         getRegularNote();
     }, [noteId]);
 
-    // console.log(noteDetails._ownerId);
-
     const {
         changeHandler,
         submitHandler,
         values,
     } = useForm(Object.assign(initialValues, noteDetails));
-    // console.log(values);
 
-    //Original behaviour
-    // const deleteRegularNoteHandler = async () => {
-    //     try{
-    //         await regularNotesApi.removeRegularNote(noteId);
-
-    //         navigate(`/${userId}/dashboard/regularnotes`);
-    //     }catch(err){
-    //         console.log(err.message);
-    //     }
-    // }
     const deleteRegularNoteHandler = async () => {
         const isConfirmed = confirm(`Are you sure you want to delete this "${noteDetails.subject}" regular note?`);
         
@@ -60,6 +49,12 @@ export default function RegularNoteDetails() {
                 console.log(err.message);
             }
         }
+    }
+    console.log(noteDetails);
+    console.log(currUserId);
+    
+    if(currUserId !== noteDetails._ownerId){
+        return <ErrorPage />
     }
 
     return (
@@ -77,9 +72,7 @@ export default function RegularNoteDetails() {
                     disabled
                 />
                 <div className={styles.buttonsWrapper}>
-                {/* IF THERE'S BUG REMOVE USERID FROM THE LINK */}
                 <Link to={`/${userId}/dashboard/regularnotes/${noteId}/edit`} className={styles.button}>Edit</Link>
-                {/* <Link to={`/${userId}/dashboard/regularnotes/${noteId}/delete`} className={styles.button}>Delete</Link> */}
                 <a href="#" className={styles.button}onClick={deleteRegularNoteHandler}>Delete</a>
                 </div>
             </form>

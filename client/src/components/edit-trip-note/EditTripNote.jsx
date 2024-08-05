@@ -3,10 +3,13 @@ import styles from './EditTripNote.module.css';
 import { useEffect, useState } from 'react';
 import useForm from '../../hooks/useForm';
 import tripNotesApi from '../../api/trip-notes-api';
+import ErrorPage from '../error-page/ErrorPage';
+import { useAuthContext } from '../../contexts/AuthContext';
 
 const initialValues = { destination: '', thoughts: '' };
 
 export default function EditTripNote() {
+    const {userId: currUserId} = useAuthContext();
     const [error, setError] = useState('');
     const navigate = useNavigate();
     const { userId, noteId } = useParams();
@@ -48,6 +51,10 @@ export default function EditTripNote() {
         };
         fetchNote();
     }, [noteId, setValues]);
+
+    if (currUserId !== note._ownerId) {
+        return <ErrorPage />;
+    }
 
     if (loading) {
         return <div>Loading...</div>;

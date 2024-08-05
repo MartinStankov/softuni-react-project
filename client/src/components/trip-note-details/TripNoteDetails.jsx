@@ -3,15 +3,17 @@ import { Link, useNavigate, useParams } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import tripNotesApi from '../../api/trip-notes-api';
 import useForm from '../../hooks/useForm';
+import { useAuthContext } from '../../contexts/AuthContext';
+import ErrorPage from '../error-page/ErrorPage';
 
 
 const initialValues = {
     subject: '',
     content: '',
-    //CHANGE THEM!!!
 };
 
 export default function TripNoteDetails() {
+    const {userId: currUserId} = useAuthContext();
     const navigate = useNavigate();
     const { userId, noteId } = useParams();
     const [noteDetails, setNoteDetails] = useState('');
@@ -35,9 +37,7 @@ export default function TripNoteDetails() {
         changeHandler,
         submitHandler,
         values,
-    } = useForm(Object.assign(initialValues, noteDetails));
-    // console.log(values); 
-    
+    } = useForm(Object.assign(initialValues, noteDetails));    
 
     const deleteTripNoteHandler = async () => {
         const isConfirmed = confirm(`Are you sure you want to delete this "${noteDetails.destination}" trip note?`);
@@ -53,9 +53,11 @@ export default function TripNoteDetails() {
         }
     }
 
+    if (currUserId !== noteDetails._ownerId) {
+        return <ErrorPage />;
+    }
+
     return (
-
-
         <div className={styles.formWrapper}>
             <form onSubmit={submitHandler} className={styles.container}>
                 <h1>Trip Note:</h1>

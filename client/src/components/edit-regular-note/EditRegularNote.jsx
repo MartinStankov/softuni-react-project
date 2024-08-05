@@ -5,11 +5,14 @@ import styles from './EditRegularNote.module.css';
 import { useState, useEffect, useMemo } from 'react';
 import regularNotesApi from '../../api/regular-notes-api';
 import { useGetOneRegularNote } from '../../hooks/useRegularNotes';
+import ErrorPage from '../error-page/ErrorPage';
+import { useAuthContext } from '../../contexts/AuthContext';
 
 
 const initialValues = { subject: '', content: '' };
 
 export default function EditRegularNote() {
+    const {userId: currUserId} = useAuthContext();
     const navigate = useNavigate();
     const { userId, noteId } = useParams();
     
@@ -52,6 +55,11 @@ export default function EditRegularNote() {
         };
         fetchNote();
     }, [noteId, setValues]);
+    
+    
+    if (currUserId !== note._ownerId){
+        <ErrorPage />
+    }
 
     if (loading) {
         return <div>Loading...</div>;

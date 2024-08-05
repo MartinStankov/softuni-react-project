@@ -1,9 +1,15 @@
 import { useAuthContext } from '../../contexts/AuthContext';
+import ErrorPage from '../error-page/ErrorPage';
 import styles from './Dashboard.module.css';
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 
 export default function Dashboard() {
-    const {userId} = useAuthContext();
+    const { userId: currUserId } = useAuthContext();
+    const {userId} = useParams()
+
+    if ( currUserId !== userId) {
+        return <ErrorPage />;
+    }
 
     return (
         <div className={styles.container}>

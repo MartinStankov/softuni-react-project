@@ -1,8 +1,10 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { useAuthContext } from '../../contexts/AuthContext'; // Adjust the path as needed
 import styles from './Home.module.css';
 
-export default function Home() {
+export default function Home({ selectedPlan, setSelectedPlan }) {
+    const { isAuthenticated } = useAuthContext(); // Get authentication status
     const [price, setPrice] = useState(10);
     const [pricePeriod, setPricePeriod] = useState('/ month');
     const [discountMessage, setDiscountMessage] = useState('');
@@ -19,6 +21,13 @@ export default function Home() {
         setDiscountMessage('17% off');
     };
 
+    const handlePlanSelection = (plan) => {
+        setSelectedPlan(plan);
+    };
+
+    const handleUnsubscribe = () => {
+        setSelectedPlan(null);
+    };
 
     return (
         <div className={styles.pageContainer}>
@@ -29,8 +38,6 @@ export default function Home() {
                 </section>
                 <div className={styles.pricingWrapper}>
                     <section className={styles.pricing}>
-                        <div className={styles.pricingToggle}>
-                        </div>
                         <div className={styles.pricingCards}>
                             <div className={styles.card}>
                                 <h2>Traveler Free</h2>
@@ -43,7 +50,19 @@ export default function Home() {
                                     <li>Community Support Only</li>
                                     <li>Ads Displayed in the App</li>
                                 </ul>
-                                <Link to="/login" className={styles.btn}>Sign In</Link>
+                                {isAuthenticated ? (
+                                    selectedPlan === 'free' ? (
+                                        <>
+                                            <button className={styles.btn} disabled>You are a Free user!</button>
+                                            <br />
+                                            <button className={styles.btn} onClick={handleUnsubscribe}>Unsubscribe</button>
+                                        </>
+                                    ) : (
+                                        <button className={styles.btn} onClick={() => handlePlanSelection('free')}>Select Free Plan</button>
+                                    )
+                                ) : (
+                                    <Link to="/login" className={styles.btn}>Sign In</Link>
+                                )}
                             </div>
                         </div>
                     </section>
@@ -65,13 +84,24 @@ export default function Home() {
                                     <li>Priority Customer Support</li>
                                     <li>Ad-Free Experience</li>
                                 </ul>
-                                <Link to="/login" className={styles.btn}>Sign In</Link>
+                                {isAuthenticated ? (
+                                    selectedPlan === 'pro' ? (
+                                        <>
+                                            <button className={styles.btn} disabled>You are a Pro user!</button>
+                                            <br />
+                                            <button className={styles.btn} onClick={handleUnsubscribe}>Unsubscribe</button>
+                                        </>
+                                    ) : (
+                                        <button className={styles.btn} onClick={() => handlePlanSelection('pro')}>Select Pro Plan</button>
+                                    )
+                                ) : (
+                                    <Link to="/login" className={styles.btn}>Sign In</Link>
+                                )}
                             </div>
                         </div>
                     </section>
                 </div>
-
             </main>
         </div>
-    )
+    );
 }
