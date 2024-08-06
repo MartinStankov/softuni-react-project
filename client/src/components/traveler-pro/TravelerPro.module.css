@@ -5,8 +5,8 @@
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     padding: 1.5rem;
     text-align: center;
-    max-width: 800px; /* Adjust width as necessary for the rectangle shape */
-    margin: 2rem auto; /* Center the container horizontally */
+    max-width: 800px; 
+    margin: 2rem auto; 
     color: black;
 }
 
@@ -23,7 +23,6 @@
     margin-bottom: 1rem;
 }
 
-/* Page Container (Optional) */
 .pageContainer {
     width: 100vw;
     min-height: 70vh;
@@ -54,7 +53,6 @@
     color: white;
 }
 
-/* Pricing Styles */
 .pricing {
     padding: 2rem 1rem;
 }
@@ -134,9 +132,9 @@
 }
 
 .discountMessage {
-    color: #ff4d4f; /* A red color to indicate discount */
-    font-size: 1rem; /* A slightly smaller font size */
-    font-weight: bold; /* Make the discount text bold */
-    margin-top: -0.5rem; /* Slightly reduce the space above the discount text */
-    margin-bottom: 1rem; /* Space between discount text and list items */
+    color: #ff4d4f; 
+    font-size: 1rem; 
+    font-weight: bold; 
+    margin-top: -0.5rem; 
+    margin-bottom: 1rem; 
 }

@@ -22,7 +22,6 @@ export default function TripNoteDetails() {
         try {
             const response = await tripNotesApi.getOneTripNote(noteId);
             setNoteDetails(response);
-            // console.log(response); // This will log the actual data
         } catch (error) {
             console.error('Error fetching the note:', error);
         }

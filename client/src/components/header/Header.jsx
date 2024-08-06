@@ -1,29 +1,29 @@
 import { useAuthContext } from '../../contexts/AuthContext';
 import styles from './Header.module.css';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 
 export default function Header() {
-    // const { isAuthenticated } = auth
-    const { userId, isAuthenticated } = useAuthContext()
+    const { userId, isAuthenticated } = useAuthContext();
+    const location = useLocation();
+
+    const checkActiveLink = (path) => location.pathname === path ? styles.selected : '';
+
     return (
         <nav className={styles.navigation_bar}>
             <div className={styles.logo}>
                 <Link to='/'><h1>Traveler</h1></Link>
             </div>
             <div className={styles.navigation_buttons}>
-                {/* <Link to='/:userId/dashboard'><span style={{ fontWeight: 'bold' }}>Your Notes</span></Link> */}
                 {isAuthenticated && (
                     <>
-                        {/* <Link to='/:userId/dashboard'><span style={{ fontWeight: 'bold' }}>Your Notes</span></Link> */}
-                        {/* <Link to='/dashboard'><span style={{ fontWeight: 'bold' }}>Your Notes</span></Link> */}
-                        <Link to={`${userId}/dashboard`}><span style={{ fontWeight: 'bold' }}>Your Notes</span></Link>
-                        <Link to='/create'><span style={{ fontWeight: 'bold' }}>+</span> Add Note</Link>
+                        <Link to={`/${userId}/dashboard`} className={checkActiveLink(`/${userId}/dashboard`)}><span style={{ fontWeight: 'bold' }}>Your Notes</span></Link>
+                        <Link to='/create' className={checkActiveLink('/create')}><span style={{ fontWeight: 'bold' }}>+</span> Add Note</Link>
                     </>
                 )}
-                <Link to='/pro'>Traveler Pro</Link>
-                <Link to='/features'>Features</Link>
-                <Link to='/info'>How It Works</Link>
-                <Link to='/pricing'>Pricing</Link>
+                <Link to='/pro' className={checkActiveLink('/pro')}>Traveler Pro</Link>
+                <Link to='/features' className={checkActiveLink('/features')}>Features</Link>
+                <Link to='/info' className={checkActiveLink('/info')}>How It Works</Link>
+                <Link to='/pricing' className={checkActiveLink('/pricing')}>Pricing</Link>
                 {isAuthenticated ?
                     (
                         <Link to='/logout'>Log Out</Link>
@@ -31,14 +31,11 @@ export default function Header() {
                     :
                     (
                         <>
-                            <Link to='/login'>Sign In</Link>
-                            <Link to='/register' className={styles.signUpButton}>Sign Up</Link>
+                            <Link to='/login' className={checkActiveLink('/login')}>Sign In</Link>
+                            <Link to='/register' className={`${styles.signUpButton} ${checkActiveLink('/register')}`}>Sign Up</Link>
                         </>
                     )
                 }
-                {/* <Link to='/login'>Sign In</Link>
-                <Link to='/register' className={styles.signUpButton}>Sign Up</Link>
-                <Link to='/logout'>Log Out</Link> */}
             </div>
         </nav>
     )

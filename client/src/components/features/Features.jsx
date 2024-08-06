@@ -18,7 +18,6 @@ export default function Features() {
 
                     {!isAuthenticated && <p>Simply <Link to='/register' className={styles.signUpButton}>Sign Up</Link> and start adding your trips!</p>}
                     {!isAuthenticated && <Link to='/register' className={styles.signUpButtonBottom}>Sign Up! It's Free!</Link>}
-                    {/* might change to dashboard later */}
                     {isAuthenticated && <Link to='/' className={styles.homePageRedirect}>Click here to get to the Home Page</Link>}
                 </div>
             </div>

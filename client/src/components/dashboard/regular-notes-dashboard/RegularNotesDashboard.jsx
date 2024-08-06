@@ -25,7 +25,6 @@ export default function RegularNotesDashboard() {
                         <div key={note._id} className={styles.noteCard}>
                             <h2 className={styles.noteSubject}>{note.subject}</h2>
                             <p className={styles.noteText}>{note.content}</p>
-                            {/* TODO: CHANGE BUTTON TO LINK */}
                             <Link to={`/${userId}/dashboard/regularnotes/${note._id}`} className={styles.detailsButton}>Details</Link>
                         </div>
                     ))}

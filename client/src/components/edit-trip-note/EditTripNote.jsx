@@ -30,7 +30,8 @@ export default function EditTripNote() {
         }
         if (isConfirmed) {
             await tripNotesApi.updateTripNote(noteId, values);
-            navigate(`/${userId}/dashboard/tripnotes/${noteId}`);
+            // navigate(`/${userId}/dashboard/tripnotes/${noteId}`);
+            navigate(`/${userId}/dashboard/tripnotes`);
         }
     });
 

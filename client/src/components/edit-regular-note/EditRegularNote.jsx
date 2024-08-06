@@ -34,7 +34,8 @@ export default function EditRegularNote() {
         
         if (isConfirmed) {
             await regularNotesApi.updateRegularNote(noteId, values);
-            navigate(`/${userId}/dashboard/regularnotes/${noteId}`);
+            // navigate(`/${userId}/dashboard/regularnotes/${noteId}`);
+            navigate(`/${userId}/dashboard/regularnotes`);
         }
     });
 
@@ -55,10 +56,9 @@ export default function EditRegularNote() {
         };
         fetchNote();
     }, [noteId, setValues]);
-    
-    
+
     if (currUserId !== note._ownerId){
-        <ErrorPage />
+        return <ErrorPage />
     }
 
     if (loading) {

@@ -56,19 +56,11 @@ h1 {
     cursor: not-allowed;
 }
 
-/* ORIGINAL */
-/* .formWrapper {
-    background: rgb(2, 0, 36);
-    background: linear-gradient(90deg, rgba(2, 0, 36, 1) 0%, rgba(9, 9, 121, 1) 35%, rgba(184, 0, 255, 1) 66%);
-    height: 89.4vh;
-} */
-
-
 .formWrapper {
     position: relative;
     height: 89.4vh;
     padding: 20px;
-    overflow: hidden; /* Ensures the pseudo-element doesn't overflow */
+    overflow: hidden; 
 }
 
 .formWrapper::before {
@@ -79,8 +71,8 @@ h1 {
     width: 100%;
     height: 100%;
     background: linear-gradient(90deg, rgba(2, 0, 36, 1) 0%, rgba(9, 9, 121, 1) 35%, rgba(184, 0, 255, 1) 66%);
-    filter: blur(255px); /* Apply blur only to the background */
-    z-index: -1; /* Ensure the background stays behind the content */
+    filter: blur(255px); 
+    z-index: -1; 
     pointer-events: none; /* Prevent the pseudo-element from interfering with any content interaction */
     border-radius: inherit; /* Match border-radius if you have one */
 }

@@ -1,10 +1,10 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { useAuthContext } from '../../contexts/AuthContext'; // Adjust the path as needed
+import { useAuthContext } from '../../contexts/AuthContext';
 import styles from './Home.module.css';
 
 export default function Home({ selectedPlan, setSelectedPlan }) {
-    const { isAuthenticated } = useAuthContext(); // Get authentication status
+    const { isAuthenticated } = useAuthContext(); 
     const [price, setPrice] = useState(10);
     const [pricePeriod, setPricePeriod] = useState('/ month');
     const [discountMessage, setDiscountMessage] = useState('');

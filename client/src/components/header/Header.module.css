@@ -43,3 +43,24 @@
 .signUpButton:hover {
     background-color: var(--link-hover-color);
 }
+
+/* Selected navigation item */
+.navigation_buttons a.selected {
+    background-color: var(--secondary-background-color);
+    color: var(--secondary-color);
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    position: relative;
+    overflow: hidden;
+}
+
+.navigation_buttons a.selected::after {
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    height: 2px;
+    background-color: var(--accent-color);
+    border-radius: 5px;
+}

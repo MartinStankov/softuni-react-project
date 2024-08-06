@@ -35,23 +35,23 @@ h1 {
 }
 
 .buttonsWrapper {
-    display: flex; /* Allow buttons to sit side by side */
-    text-align: center; /* Center-align the buttons within the container */
-    width: 100%; /* Ensure the wrapper takes up the full width of its container */
+    display: flex;
+    text-align: center; 
+    width: 100%; 
 }
 
 .button {
-    display: inline-block; /* Force the buttons to be inline with each other */
-    width: 45%; /* Adjust button width to be a bit smaller */
-    padding: 10px 0; /* Adjust padding to ensure smaller button height */
+    display: inline-block; 
+    width: 45%; 
+    padding: 10px 0; 
     background-color: #007BFF;
     color: white;
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    font-size: 14px; /* Adjust the font size */
-    margin: 5px 2%; /* Add margin to separate buttons */
-    text-align: center; /* Ensure text is centered */
+    font-size: 14px; 
+    margin: 5px 2%;
+    text-align: center; 
 }
 
 .button:disabled {
@@ -59,22 +59,11 @@ h1 {
     cursor: not-allowed;
 }
 
-
-
-
-/* ORIGINAL */
-/* .formWrapper {
-    background: rgb(2, 0, 36);
-    background: linear-gradient(90deg, rgba(2, 0, 36, 1) 0%, rgba(9, 9, 121, 1) 35%, rgba(184, 0, 255, 1) 66%);
-    height: 89.4vh;
-} */
-
-
 .formWrapper {
     position: relative;
     height: 89.4vh;
     padding: 20px;
-    overflow: hidden; /* Ensures the pseudo-element doesn't overflow */
+    overflow: hidden; 
 }
 
 .formWrapper::before {

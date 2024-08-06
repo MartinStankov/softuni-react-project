@@ -21,7 +21,6 @@ export default function CreateTripNote() {
 
         try {
             const { _id: noteId } = await tripNoteCreate(values)
-            //you can change the url for better navigation by adding the noteId
             navigate(`/${userId}/dashboard/tripnotes`)
         } catch (err) {
             console.log(err.message);

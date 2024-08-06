@@ -8,7 +8,6 @@ import useForm from '../../hooks/useForm';
 const initialValues = { email: '', password: '' };
 
 export default function Login() {
-    //TODO: add error messages and proper validation as well as keeping the values of the form fields
 
     const login = useLogin();
     const navigate = useNavigate();

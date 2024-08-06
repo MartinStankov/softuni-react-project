@@ -115,22 +115,12 @@
     background-color: var(--link-hover-color);
 }
 
-/* ORIGINAL */
-/* .pageContainer {
-    width: 100vw;
-    height: 89.3vh;
-    background-color: var(--background-color);
-    font-family: var(--font-family);
-    background: rgb(2,0,36);
-    background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 35%, rgba(184,0,255,1) 66%);
-} */
-
 .discountMessage {
-    color: #ff4d4f; /* A red color to indicate discount */
-    font-size: 1rem; /* A slightly smaller font size */
-    font-weight: bold; /* Make the discount text bold */
-    margin-top: -0.5rem; /* Slightly reduce the space above the discount text */
-    margin-bottom: 1rem; /* Space between discount text and list items */
+    color: #ff4d4f;
+    font-size: 1rem; 
+    font-weight: bold; 
+    margin-top: -0.5rem;
+    margin-bottom: 1rem; 
 }
 
 .heading{

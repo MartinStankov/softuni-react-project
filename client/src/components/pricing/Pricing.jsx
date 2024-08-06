@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { useAuthContext } from '../../contexts/AuthContext'; // Adjust the path as needed
+import { useAuthContext } from '../../contexts/AuthContext'; 
 import styles from './Pricing.module.css';
 
 export default function Pricing({ selectedPlan, setSelectedPlan }) {
