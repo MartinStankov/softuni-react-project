@@ -16,9 +16,9 @@ export default function TravelerPro({ selectedPlan, setSelectedPlan }) {
     };
 
     const yearlyBtnOnClickHandler = () => {
-        setPrice(100);
+        setPrice(80);
         setPricePeriod('/ year');
-        setDiscountMessage('17% off');
+        setDiscountMessage('33% off');
     };
 
     const handlePlanSelection = (plan) => {
